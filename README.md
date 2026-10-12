@@ -1,59 +1,76 @@
-# AuraOps
+# Aura Ops — Gestión de Operaciones
+> Módulo de control operacional del **Ecosistema Aura**: Tareas, responsables, solicitudes, aprobaciones, plazos y seguimiento de procesos internos (SOP).
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.2.
+---
 
-## Development server
+## 🧭 Módulos Incluidos
 
-To start a local development server, run:
+1. **Centro de Control (Dashboard)**
+   - KPIs de operaciones en tiempo real: tasa de cumplimiento SLA (%), solicitudes pendientes de firma, tareas fuera de plazo y procesos activos.
+   - Panel de urgencias y bandeja rápida de aprobaciones con un clic.
+   - Resumen del estado de Procedimientos Estándar de Operación (SOP).
 
+2. **Tareas Operativas (Lista & Kanban)**
+   - Doble vista: tabla ejecutiva estructurada y tablero Kanban por estados (`Pendiente`, `En Curso`, `En Revisión`, `Bloqueada`, `Completada`).
+   - Priorización: `Baja`, `Media`, `Alta`, `Urgente`.
+   - Checklists interactivos de verificación por tarea.
+   - Filtros combinados por texto, estado, prioridad y responsable.
+
+3. **Portal de Solicitudes Internas**
+   - Registro de requerimientos operacionales: compras de insumos, permisos de trabajo/ingreso, accesos a sistemas TI, presupuestos y modificaciones de procesos.
+   - Justificación técnica y presupuesto estimado en USD.
+
+4. **Centro de Aprobaciones**
+   - Flujo de revisión ejecutiva y auditoría.
+   - Acciones: **Aprobar**, **Rechazar** o **Solicitar Modificaciones** con comentarios y registro de firma.
+
+5. **Plazos & Calendario (Deadlines)**
+   - Monitoreo preventivo de fechas límite con categorización de criticidad:
+     - 🚨 **Vencidas** (con cálculo de días de atraso y opciones de prórroga rápida o resolución inmediata).
+     - ⏰ **Vencen Hoy** (enfoque del turno actual).
+     - ⏳ **Próximos 7 días** (horizonte de planificación operativa).
+
+6. **Seguimiento de Procesos Internos (SOPs)**
+   - Estandarización de flujos operativos en etapas (Stages).
+   - Barras de progreso por fase con conteo de puntos de control.
+   - Códigos oficiales de procedimientos (ej. `SOP-OPS-001-v3`, `SOP-QA-002-v5`) y última fecha de auditoría.
+
+7. **Equipo & Responsables**
+   - Directorio de miembros con roles (`Líder de Operaciones`, `Supervisor`, `Operador`, `Auditor`, `Gerente`).
+   - Monitoreo de carga operativa actual y porcentaje de saturación.
+   - Modal para dar de alta nuevos miembros al equipo.
+
+---
+
+## 🎨 Diseño & Estilo
+- **Estética**: Sobria, ejecutiva y sutil, utilizando tonos neutrales Slate (`slate-900`, `slate-800`, `slate-100`), bordes pulidos y acentos suaves.
+- **Tipografía**: `Inter` con tracking ajustado.
+- **Persistencia**: Sincronización automática en `localStorage` con opción de restablecer datos muestra en cualquier momento desde el sidebar.
+
+---
+
+## 🚀 Puesta en Marcha
+
+### Prerrequisitos
+- **Node.js** (v18+)
+- **NPM**
+
+### Instalación de dependencias
 ```bash
-ng serve
+cd "Aura Ops"
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+### Iniciar servidor de desarrollo
 ```bash
-ng generate component component-name
+npm start
+# O alternativamente:
+npx ng serve
 ```
+Acceder en el navegador a: `http://localhost:4200/`
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+### Compilación para Producción
 ```bash
-ng generate --help
+npm run build
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Los archivos optimizados se generarán en la carpeta `dist/aura-ops`.
