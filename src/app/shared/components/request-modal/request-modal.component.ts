@@ -15,7 +15,7 @@ import { RequestPriority, RequestType } from '../../../core/models/request.model
         <div class="fixed inset-0 bg-slate-900/30 backdrop-blur-2xs" (click)="close()"></div>
         <div class="relative w-full max-w-md rounded-lg bg-white border border-slate-200 shadow-xl p-5 text-slate-800 text-xs">
           <div class="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
-            <h3 class="text-sm font-semibold text-slate-900">Nueva Solicitud</h3>
+            <h3 class="text-sm font-semibold text-[#0B192C]">Nueva Solicitud</h3>
             <button type="button" (click)="close()" class="text-slate-400 hover:text-slate-700">&times;</button>
           </div>
 
@@ -28,7 +28,7 @@ import { RequestPriority, RequestType } from '../../../core/models/request.model
                 name="title" 
                 required
                 placeholder="ej. Reemplazo de baterías montacargas"
-                class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-slate-900"
+                class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:border-[#0B192C]"
               />
             </div>
 
@@ -47,7 +47,7 @@ import { RequestPriority, RequestType } from '../../../core/models/request.model
 
               <div>
                 <label class="block text-slate-600 mb-1">Costo estimado (USD)</label>
-                <input type="number" [(ngModel)]="estimatedCost" name="estimatedCost" placeholder="ej. 350" class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none" />
+                <input type="number" [(ngModel)]="estimatedCost" name="estimatedCost" placeholder="ej. 350" class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:border-[#0B192C]" />
               </div>
             </div>
 
@@ -59,13 +59,13 @@ import { RequestPriority, RequestType } from '../../../core/models/request.model
                 rows="2"
                 required
                 placeholder="Motivo del requerimiento..."
-                class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-slate-900"
+                class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:border-[#0B192C]"
               ></textarea>
             </div>
 
             <div class="pt-3 flex justify-end gap-2 border-t border-slate-100">
               <button type="button" (click)="close()" class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded">Cancelar</button>
-              <button type="submit" [disabled]="!title.trim() || !justification.trim()" class="px-3 py-1 bg-slate-900 text-white rounded disabled:opacity-50">Enviar</button>
+              <button type="submit" [disabled]="!title.trim() || !justification.trim()" class="px-3 py-1 bg-[#0B192C] hover:bg-[#142842] text-white rounded shadow-2xs disabled:opacity-50 transition-colors">Enviar</button>
             </div>
           </form>
         </div>

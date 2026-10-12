@@ -15,7 +15,7 @@ import { TaskCategory, TaskPriority } from '../../../core/models/task.model';
         <div class="fixed inset-0 bg-slate-900/30 backdrop-blur-2xs" (click)="close()"></div>
         <div class="relative w-full max-w-md rounded-lg bg-white border border-slate-200 shadow-xl p-5 text-slate-800 text-xs">
           <div class="flex items-center justify-between pb-2 border-b border-slate-100 mb-3">
-            <h3 class="text-sm font-semibold text-slate-900">Nueva Tarea</h3>
+            <h3 class="text-sm font-semibold text-[#0B192C]">Nueva Tarea</h3>
             <button type="button" (click)="close()" class="text-slate-400 hover:text-slate-700">&times;</button>
           </div>
 
@@ -28,7 +28,7 @@ import { TaskCategory, TaskPriority } from '../../../core/models/task.model';
                 name="title" 
                 required
                 placeholder="ej. Inspección técnica de rutina"
-                class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-slate-900"
+                class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:border-[#0B192C]"
               />
             </div>
 
@@ -39,7 +39,7 @@ import { TaskCategory, TaskPriority } from '../../../core/models/task.model';
                 name="description" 
                 rows="2"
                 placeholder="Observaciones o notas breves..."
-                class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:ring-1 focus:ring-slate-900"
+                class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:border-[#0B192C]"
               ></textarea>
             </div>
 
@@ -85,7 +85,7 @@ import { TaskCategory, TaskPriority } from '../../../core/models/task.model';
 
             <div class="pt-3 flex justify-end gap-2 border-t border-slate-100">
               <button type="button" (click)="close()" class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded">Cancelar</button>
-              <button type="submit" [disabled]="!title.trim() || !dueDate" class="px-3 py-1 bg-slate-900 text-white rounded disabled:opacity-50">Guardar</button>
+              <button type="submit" [disabled]="!title.trim() || !dueDate" class="px-3 py-1 bg-[#0B192C] hover:bg-[#142842] text-white rounded shadow-2xs disabled:opacity-50 transition-colors">Guardar</button>
             </div>
           </form>
         </div>

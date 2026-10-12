@@ -9,25 +9,25 @@ import { OperationsService } from '../../core/services/operations.service';
   template: `
     <div class="space-y-4 max-w-5xl">
       <div>
-        <h2 class="text-base font-semibold text-slate-900 tracking-tight">Procesos Internos</h2>
+        <h2 class="text-base font-semibold text-[#0B192C] tracking-tight">Procesos Internos</h2>
         <p class="text-xs text-slate-400">Procedimientos estándar de operación (SOP) y etapas.</p>
       </div>
 
-      <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden divide-y divide-slate-100 text-xs">
+      <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden shadow-2xs divide-y divide-slate-100 text-xs">
         @for (proc of opsService.enrichedProcesses(); track proc.id) {
-          <div class="p-4 hover:bg-slate-50/60 transition-colors">
+          <div class="p-4 hover:bg-[#F0F4F8]/40 transition-colors">
             <div class="flex items-center justify-between gap-4">
               <div class="min-w-0">
                 <div class="flex items-center gap-2">
                   <span class="font-mono text-[10px] text-slate-400">{{ proc.code }}</span>
-                  <span class="font-medium text-slate-900">{{ proc.title }}</span>
+                  <span class="font-medium text-[#0B192C]">{{ proc.title }}</span>
                   <span class="text-[10px] text-slate-400 font-mono">({{ proc.sopDocumentCode }})</span>
                 </div>
                 <p class="text-[11px] text-slate-500 mt-0.5 line-clamp-1">{{ proc.description }}</p>
               </div>
 
               <div class="text-right shrink-0">
-                <span class="font-medium text-slate-900">{{ proc.complianceRate }}%</span>
+                <span class="font-semibold text-[#0B192C]">{{ proc.complianceRate }}%</span>
                 <span class="text-[10px] text-slate-400 block">Cumplimiento</span>
               </div>
             </div>

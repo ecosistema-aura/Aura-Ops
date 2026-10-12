@@ -12,28 +12,28 @@ import { Task } from '../../core/models/task.model';
   imports: [CommonModule, RouterLink, BadgeComponent],
   template: `
     <div class="space-y-8 max-w-5xl">
-      <!-- Minimalist Header & KPI Row -->
+      <!-- Minimalist Header & KPI Row with Aura Navy -->
       <div>
-        <h2 class="text-base font-semibold text-slate-900 tracking-tight">Resumen Operativo</h2>
+        <h2 class="text-base font-semibold text-[#0B192C] tracking-tight">Resumen Operativo</h2>
         <p class="text-xs text-slate-400 mt-0.5">Estado general de tareas, aprobaciones y plazos del equipo.</p>
         
         <!-- Clean, calm 4-metric strip -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 pt-4 border-t border-slate-200/80">
           <div>
             <div class="text-[11px] text-slate-400 font-medium">Cumplimiento</div>
-            <div class="text-xl font-semibold text-slate-900 mt-0.5">{{ opsService.metrics().onTimeDeliveryRate }}%</div>
+            <div class="text-xl font-semibold text-[#0B192C] mt-0.5">{{ opsService.metrics().onTimeDeliveryRate }}%</div>
           </div>
           <div>
             <div class="text-[11px] text-slate-400 font-medium">Tareas Activas</div>
-            <div class="text-xl font-semibold text-slate-900 mt-0.5">{{ opsService.metrics().pendingTasks }}</div>
+            <div class="text-xl font-semibold text-[#0B192C] mt-0.5">{{ opsService.metrics().pendingTasks }}</div>
           </div>
           <div>
             <div class="text-[11px] text-slate-400 font-medium">Por Aprobar</div>
-            <div class="text-xl font-semibold text-slate-900 mt-0.5">{{ opsService.metrics().pendingApprovals }}</div>
+            <div class="text-xl font-semibold text-[#0B192C] mt-0.5">{{ opsService.metrics().pendingApprovals }}</div>
           </div>
           <div>
             <div class="text-[11px] text-slate-400 font-medium">Fuera de Plazo</div>
-            <div class="text-xl font-semibold mt-0.5" [ngClass]="opsService.metrics().overdueTasksCount > 0 ? 'text-rose-600' : 'text-slate-900'">
+            <div class="text-xl font-semibold mt-0.5" [ngClass]="opsService.metrics().overdueTasksCount > 0 ? 'text-rose-600' : 'text-[#0B192C]'">
               {{ opsService.metrics().overdueTasksCount }}
             </div>
           </div>
@@ -41,18 +41,18 @@ import { Task } from '../../core/models/task.model';
       </div>
 
       <!-- Clean Section: Prioridades del Turno -->
-      <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden">
+      <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden shadow-2xs">
         <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-          <div class="text-xs font-semibold text-slate-800">Tareas en curso</div>
-          <a routerLink="/tasks" class="text-[11px] text-slate-400 hover:text-slate-700">Ver todas &rarr;</a>
+          <div class="text-xs font-semibold text-[#0B192C]">Tareas en curso</div>
+          <a routerLink="/tasks" class="text-[11px] text-slate-400 hover:text-[#0B192C] transition-colors">Ver todas &rarr;</a>
         </div>
 
         <div class="divide-y divide-slate-100 text-xs">
           @for (task of priorityTasks; track task.id) {
-            <div class="px-4 py-3 flex items-center justify-between gap-4 hover:bg-slate-50/60 transition-colors">
+            <div class="px-4 py-3 flex items-center justify-between gap-4 hover:bg-[#F0F4F8]/40 transition-colors">
               <div class="flex items-center gap-3 min-w-0">
                 <span class="text-[10px] font-mono text-slate-400 w-16">{{ task.code }}</span>
-                <span class="font-medium text-slate-900 truncate">{{ task.title }}</span>
+                <span class="font-medium text-[#0B192C] truncate">{{ task.title }}</span>
               </div>
 
               <div class="flex items-center gap-4 shrink-0 text-slate-500">
@@ -65,7 +65,7 @@ import { Task } from '../../core/models/task.model';
                   <button 
                     type="button" 
                     (click)="completeTask(task)"
-                    class="text-[11px] text-slate-400 hover:text-slate-800 font-medium"
+                    class="text-[11px] text-slate-400 hover:text-[#0B192C] font-medium transition-colors"
                   >
                     Listo
                   </button>
@@ -80,19 +80,19 @@ import { Task } from '../../core/models/task.model';
 
       <!-- Clean Section: Aprobaciones Pendientes -->
       @if (pendingRequests.length > 0) {
-        <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden">
+        <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden shadow-2xs">
           <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-            <div class="text-xs font-semibold text-slate-800">Solicitudes por autorizar</div>
-            <a routerLink="/approvals" class="text-[11px] text-slate-400 hover:text-slate-700">Ir a aprobaciones &rarr;</a>
+            <div class="text-xs font-semibold text-[#0B192C]">Solicitudes por autorizar</div>
+            <a routerLink="/approvals" class="text-[11px] text-slate-400 hover:text-[#0B192C] transition-colors">Ir a aprobaciones &rarr;</a>
           </div>
 
           <div class="divide-y divide-slate-100 text-xs">
             @for (req of pendingRequests; track req.id) {
-              <div class="px-4 py-3 flex items-center justify-between gap-4 hover:bg-slate-50/60 transition-colors">
+              <div class="px-4 py-3 flex items-center justify-between gap-4 hover:bg-[#F0F4F8]/40 transition-colors">
                 <div class="min-w-0">
                   <div class="flex items-center gap-2">
                     <span class="font-mono text-[10px] text-slate-400">{{ req.code }}</span>
-                    <span class="font-medium text-slate-900">{{ req.title }}</span>
+                    <span class="font-medium text-[#0B192C]">{{ req.title }}</span>
                   </div>
                   <div class="text-[11px] text-slate-400 mt-0.5 truncate max-w-lg">{{ req.justification }}</div>
                 </div>
@@ -101,14 +101,14 @@ import { Task } from '../../core/models/task.model';
                   <button 
                     type="button" 
                     (click)="quickApprove(req.id)"
-                    class="px-2.5 py-1 text-[11px] font-medium text-slate-800 bg-slate-100 hover:bg-slate-200 rounded transition-colors"
+                    class="px-2.5 py-1 text-[11px] font-medium text-white bg-[#0B192C] hover:bg-[#142842] rounded shadow-2xs transition-colors"
                   >
                     Aprobar
                   </button>
                   <button 
                     type="button" 
                     (click)="quickReject(req.id)"
-                    class="px-2 py-1 text-[11px] text-slate-400 hover:text-rose-600 rounded"
+                    class="px-2 py-1 text-[11px] text-slate-400 hover:text-rose-600 rounded transition-colors"
                   >
                     Rechazar
                   </button>

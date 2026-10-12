@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { OperationsService } from '../../core/services/operations.service';
 import { NotificationService } from '../../core/services/notification.service';
-import { BadgeComponent } from '../../shared/components/badge/badge.component';
-import { Task, TaskPriority, TaskStatus } from '../../core/models/task.model';
+import { Task, TaskStatus } from '../../core/models/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -15,7 +14,7 @@ import { Task, TaskPriority, TaskStatus } from '../../core/models/task.model';
       <!-- Minimalist Header & Filters -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
         <div>
-          <h2 class="text-base font-semibold text-slate-900 tracking-tight">Tareas</h2>
+          <h2 class="text-base font-semibold text-[#0B192C] tracking-tight">Tareas</h2>
           <p class="text-xs text-slate-400">Listado general de operaciones y asignaciones.</p>
         </div>
 
@@ -23,7 +22,7 @@ import { Task, TaskPriority, TaskStatus } from '../../core/models/task.model';
           <!-- Quick Filter Status -->
           <select 
             [(ngModel)]="filterStatus" 
-            class="text-xs px-2.5 py-1.5 rounded border border-slate-200 bg-white text-slate-700 focus:outline-none"
+            class="text-xs px-2.5 py-1.5 rounded border border-slate-200 bg-white text-slate-700 focus:outline-none focus:border-[#0B192C]"
           >
             <option value="all">Todos los estados</option>
             <option value="pending">Pendiente</option>
@@ -38,13 +37,13 @@ import { Task, TaskPriority, TaskStatus } from '../../core/models/task.model';
             type="text" 
             [(ngModel)]="searchQuery" 
             placeholder="Buscar..."
-            class="text-xs px-2.5 py-1.5 rounded border border-slate-200 focus:outline-none w-36 sm:w-48"
+            class="text-xs px-2.5 py-1.5 rounded border border-slate-200 focus:outline-none focus:border-[#0B192C] w-36 sm:w-48"
           />
 
           <button 
             type="button"
             (click)="onNewTask.emit()"
-            class="text-xs px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded transition-colors"
+            class="text-xs px-3 py-1.5 bg-[#0B192C] hover:bg-[#142842] text-white rounded shadow-2xs transition-colors"
           >
             + Nueva
           </button>
@@ -52,7 +51,7 @@ import { Task, TaskPriority, TaskStatus } from '../../core/models/task.model';
       </div>
 
       <!-- Clean Minimal Table -->
-      <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden">
+      <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden shadow-2xs">
         <table class="w-full text-left text-xs border-collapse">
           <thead>
             <tr class="border-b border-slate-100 text-slate-400 font-medium text-[11px]">
@@ -66,10 +65,10 @@ import { Task, TaskPriority, TaskStatus } from '../../core/models/task.model';
           </thead>
           <tbody class="divide-y divide-slate-100">
             @for (task of filteredTasks; track task.id) {
-              <tr class="hover:bg-slate-50/60 transition-colors">
+              <tr class="hover:bg-[#F0F4F8]/40 transition-colors">
                 <td class="py-3 px-4 font-mono text-[11px] text-slate-400">{{ task.code }}</td>
                 <td class="py-3 px-4">
-                  <div class="font-medium text-slate-900">{{ task.title }}</div>
+                  <div class="font-medium text-[#0B192C]">{{ task.title }}</div>
                   @if (task.description) {
                     <div class="text-[11px] text-slate-400 truncate max-w-md mt-0.5">{{ task.description }}</div>
                   }
@@ -79,7 +78,7 @@ import { Task, TaskPriority, TaskStatus } from '../../core/models/task.model';
                   <select 
                     [ngModel]="task.status" 
                     (ngModelChange)="onStatusChange(task.id, $event)"
-                    class="text-[11px] py-0.5 px-1.5 rounded border border-slate-200 bg-white text-slate-700 focus:outline-none"
+                    class="text-[11px] py-0.5 px-1.5 rounded border border-slate-200 bg-white text-slate-700 focus:outline-none focus:border-[#0B192C]"
                   >
                     <option value="pending">Pendiente</option>
                     <option value="in_progress">En curso</option>

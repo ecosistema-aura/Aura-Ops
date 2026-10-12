@@ -13,21 +13,21 @@ import { Department, UserRole } from '../../core/models/user.model';
     <div class="space-y-4 max-w-5xl">
       <div class="flex items-center justify-between pb-1">
         <div>
-          <h2 class="text-base font-semibold text-slate-900 tracking-tight">Equipo</h2>
+          <h2 class="text-base font-semibold text-[#0B192C] tracking-tight">Equipo</h2>
           <p class="text-xs text-slate-400">Responsables de área y roles operativos.</p>
         </div>
 
         <button 
           type="button"
           (click)="showAddModal = true"
-          class="text-xs px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white rounded transition-colors"
+          class="text-xs px-3 py-1.5 bg-[#0B192C] hover:bg-[#142842] text-white rounded shadow-2xs transition-colors"
         >
           + Responsable
         </button>
       </div>
 
       <!-- Clean Directory Table -->
-      <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden">
+      <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden shadow-2xs">
         <table class="w-full text-left text-xs border-collapse">
           <thead>
             <tr class="border-b border-slate-100 text-slate-400 font-medium text-[11px]">
@@ -40,11 +40,11 @@ import { Department, UserRole } from '../../core/models/user.model';
           </thead>
           <tbody class="divide-y divide-slate-100">
             @for (m of teamMembersWithWorkload; track m.id) {
-              <tr class="hover:bg-slate-50/60 transition-colors">
-                <td class="py-3 px-4 font-medium text-slate-900">{{ m.name }}</td>
+              <tr class="hover:bg-[#F0F4F8]/40 transition-colors">
+                <td class="py-3 px-4 font-medium text-[#0B192C]">{{ m.name }}</td>
                 <td class="py-3 px-4 text-slate-600">{{ m.role }}</td>
                 <td class="py-3 px-4 text-slate-500">{{ m.department }}</td>
-                <td class="py-3 px-4 font-mono text-[11px] text-slate-700">{{ m.activeCount }} tareas</td>
+                <td class="py-3 px-4 font-mono text-[11px] text-[#0B192C]">{{ m.activeCount }} tareas</td>
                 <td class="py-3 px-4 text-right text-slate-400 font-mono text-[11px]">{{ m.email }}</td>
               </tr>
             }
@@ -55,17 +55,17 @@ import { Department, UserRole } from '../../core/models/user.model';
       <!-- Clean Add Member Modal -->
       @if (showAddModal) {
         <div class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4">
-          <div class="fixed inset-0 bg-slate-900/40 backdrop-blur-2xs" (click)="showAddModal = false"></div>
+          <div class="fixed inset-0 bg-slate-900/30 backdrop-blur-2xs" (click)="showAddModal = false"></div>
           <div class="relative w-full max-w-sm rounded-lg bg-white border border-slate-200 shadow-xl p-5 text-slate-800">
-            <h3 class="text-sm font-semibold text-slate-900 mb-3">Nuevo Responsable</h3>
+            <h3 class="text-sm font-semibold text-[#0B192C] mb-3">Nuevo Responsable</h3>
             <form (ngSubmit)="saveMember()" class="space-y-3 text-xs">
               <div>
                 <label class="block text-slate-600 mb-1">Nombre</label>
-                <input type="text" [(ngModel)]="newName" name="newName" required class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none" />
+                <input type="text" [(ngModel)]="newName" name="newName" required class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:border-[#0B192C]" />
               </div>
               <div>
                 <label class="block text-slate-600 mb-1">Email</label>
-                <input type="email" [(ngModel)]="newEmail" name="newEmail" required class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none" />
+                <input type="email" [(ngModel)]="newEmail" name="newEmail" required class="w-full px-2.5 py-1.5 border border-slate-200 rounded focus:outline-none focus:border-[#0B192C]" />
               </div>
               <div class="grid grid-cols-2 gap-2">
                 <div>
@@ -91,7 +91,7 @@ import { Department, UserRole } from '../../core/models/user.model';
               </div>
               <div class="pt-3 flex justify-end gap-2 border-t border-slate-100">
                 <button type="button" (click)="showAddModal = false" class="px-3 py-1 text-slate-600 hover:bg-slate-50 rounded">Cancelar</button>
-                <button type="submit" [disabled]="!newName.trim() || !newEmail.trim()" class="px-3 py-1 bg-slate-900 text-white rounded disabled:opacity-50">Guardar</button>
+                <button type="submit" [disabled]="!newName.trim() || !newEmail.trim()" class="px-3 py-1 bg-[#0B192C] hover:bg-[#142842] text-white rounded shadow-2xs disabled:opacity-50 transition-colors">Guardar</button>
               </div>
             </form>
           </div>
@@ -129,7 +129,7 @@ export class TeamComponent {
       initials,
       role: this.newRole,
       department: this.newDepartment,
-      avatarColor: 'bg-slate-800 text-slate-100'
+      avatarColor: 'bg-[#0B192C] text-slate-100'
     });
 
     this.notificationService.success('Registrado', this.newName);
