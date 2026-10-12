@@ -7,10 +7,10 @@ import { OperationsService } from '../../../core/services/operations.service';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <header class="h-16 bg-[#0B192C] border-b border-[#1E3756] px-8 flex items-center justify-between sticky top-0 z-20">
+    <header class="h-20 bg-[#0B192C] border-b border-[#1E3756] px-8 flex items-center justify-between sticky top-0 z-20">
       <!-- Section Title -->
       <div class="flex items-center gap-3">
-        <h1 class="text-sm font-semibold text-white tracking-tight uppercase tracking-wider text-xs">{{ title }}</h1>
+        <h1 class="text-sm font-bold text-white tracking-wider uppercase">{{ title }}</h1>
       </div>
 
       <!-- Actions with high contrast and enlarged size -->

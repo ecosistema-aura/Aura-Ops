@@ -11,8 +11,8 @@ import { LogoComponent } from '../logo/logo.component';
   imports: [CommonModule, RouterLink, RouterLinkActive, LogoComponent],
   template: `
     <aside class="w-64 bg-[#0B192C] border-r border-[#1E3756] flex flex-col h-screen text-slate-300 select-none shrink-0">
-      <!-- Header with Official Aura Logo -->
-      <div class="h-16 flex items-center px-5 border-b border-[#1E3756] justify-between">
+      <!-- Header with Official Aura Landing Logo -->
+      <div class="h-20 flex items-center px-4 border-b border-[#1E3756]">
         <app-logo></app-logo>
       </div>
 
