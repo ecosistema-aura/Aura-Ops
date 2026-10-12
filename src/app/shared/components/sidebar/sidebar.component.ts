@@ -9,14 +9,14 @@ import { NotificationService } from '../../../core/services/notification.service
   standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive],
   template: `
-    <aside class="w-60 bg-white border-r border-slate-200/80 flex flex-col h-screen text-slate-600 select-none">
-      <!-- Minimalist Header with Aura Navy Accent -->
-      <div class="h-14 flex items-center px-5 border-b border-slate-100 justify-between">
+    <aside class="w-60 bg-[#0B192C] border-r border-[#1E3756] flex flex-col h-screen text-slate-300 select-none">
+      <!-- Minimalist Header in Aura Navy -->
+      <div class="h-14 flex items-center px-5 border-b border-[#1E3756] justify-between">
         <div class="flex items-center gap-2.5">
-          <div class="w-6 h-6 rounded bg-[#0B192C] text-white flex items-center justify-center font-bold text-xs shadow-xs">
+          <div class="w-6 h-6 rounded bg-sky-500 text-white flex items-center justify-center font-bold text-xs shadow-xs">
             A
           </div>
-          <span class="text-xs font-semibold tracking-tight text-[#0B192C]">Aura Ops</span>
+          <span class="text-xs font-semibold tracking-tight text-white">Aura Ops</span>
         </div>
         <span class="text-[10px] text-slate-400 font-mono">v1.0</span>
       </div>
@@ -25,8 +25,8 @@ import { NotificationService } from '../../../core/services/notification.service
       <nav class="flex-1 overflow-y-auto px-3 py-3 space-y-0.5 text-xs">
         <a 
           routerLink="/dashboard" 
-          routerLinkActive="bg-[#F0F4F8] text-[#0B192C] font-semibold"
-          class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md hover:bg-[#F0F4F8]/60 hover:text-[#0B192C] transition-colors"
+          routerLinkActive="bg-[#152B44] text-white font-medium border-l-2 border-sky-400"
+          class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md hover:bg-[#112238] hover:text-white transition-colors"
         >
           <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -36,8 +36,8 @@ import { NotificationService } from '../../../core/services/notification.service
 
         <a 
           routerLink="/tasks" 
-          routerLinkActive="bg-[#F0F4F8] text-[#0B192C] font-semibold"
-          class="flex items-center justify-between px-2.5 py-1.5 rounded-md hover:bg-[#F0F4F8]/60 hover:text-[#0B192C] transition-colors"
+          routerLinkActive="bg-[#152B44] text-white font-medium border-l-2 border-sky-400"
+          class="flex items-center justify-between px-2.5 py-1.5 rounded-md hover:bg-[#112238] hover:text-white transition-colors"
         >
           <div class="flex items-center gap-2.5">
             <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,8 +50,8 @@ import { NotificationService } from '../../../core/services/notification.service
 
         <a 
           routerLink="/requests" 
-          routerLinkActive="bg-[#F0F4F8] text-[#0B192C] font-semibold"
-          class="flex items-center justify-between px-2.5 py-1.5 rounded-md hover:bg-[#F0F4F8]/60 hover:text-[#0B192C] transition-colors"
+          routerLinkActive="bg-[#152B44] text-white font-medium border-l-2 border-sky-400"
+          class="flex items-center justify-between px-2.5 py-1.5 rounded-md hover:bg-[#112238] hover:text-white transition-colors"
         >
           <div class="flex items-center gap-2.5">
             <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -64,8 +64,8 @@ import { NotificationService } from '../../../core/services/notification.service
 
         <a 
           routerLink="/approvals" 
-          routerLinkActive="bg-[#F0F4F8] text-[#0B192C] font-semibold"
-          class="flex items-center justify-between px-2.5 py-1.5 rounded-md hover:bg-[#F0F4F8]/60 hover:text-[#0B192C] transition-colors"
+          routerLinkActive="bg-[#152B44] text-white font-medium border-l-2 border-sky-400"
+          class="flex items-center justify-between px-2.5 py-1.5 rounded-md hover:bg-[#112238] hover:text-white transition-colors"
         >
           <div class="flex items-center gap-2.5">
             <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -74,7 +74,7 @@ import { NotificationService } from '../../../core/services/notification.service
             <span>Aprobaciones</span>
           </div>
           @if (opsService.metrics().pendingApprovals > 0) {
-            <span class="text-[10px] font-medium text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded font-mono">
+            <span class="text-[10px] font-medium text-amber-300 bg-amber-950/60 border border-amber-800/60 px-1.5 py-0.2 rounded font-mono">
               {{ opsService.metrics().pendingApprovals }}
             </span>
           }
@@ -82,8 +82,8 @@ import { NotificationService } from '../../../core/services/notification.service
 
         <a 
           routerLink="/deadlines" 
-          routerLinkActive="bg-[#F0F4F8] text-[#0B192C] font-semibold"
-          class="flex items-center justify-between px-2.5 py-1.5 rounded-md hover:bg-[#F0F4F8]/60 hover:text-[#0B192C] transition-colors"
+          routerLinkActive="bg-[#152B44] text-white font-medium border-l-2 border-sky-400"
+          class="flex items-center justify-between px-2.5 py-1.5 rounded-md hover:bg-[#112238] hover:text-white transition-colors"
         >
           <div class="flex items-center gap-2.5">
             <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,7 +92,7 @@ import { NotificationService } from '../../../core/services/notification.service
             <span>Plazos</span>
           </div>
           @if (opsService.metrics().overdueTasksCount > 0) {
-            <span class="text-[10px] font-medium text-rose-700 bg-rose-50 px-1.5 py-0.2 rounded font-mono">
+            <span class="text-[10px] font-medium text-rose-300 bg-rose-950/60 border border-rose-800/60 px-1.5 py-0.2 rounded font-mono">
               {{ opsService.metrics().overdueTasksCount }}
             </span>
           }
@@ -100,8 +100,8 @@ import { NotificationService } from '../../../core/services/notification.service
 
         <a 
           routerLink="/processes" 
-          routerLinkActive="bg-[#F0F4F8] text-[#0B192C] font-semibold"
-          class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md hover:bg-[#F0F4F8]/60 hover:text-[#0B192C] transition-colors"
+          routerLinkActive="bg-[#152B44] text-white font-medium border-l-2 border-sky-400"
+          class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md hover:bg-[#112238] hover:text-white transition-colors"
         >
           <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -111,8 +111,8 @@ import { NotificationService } from '../../../core/services/notification.service
 
         <a 
           routerLink="/team" 
-          routerLinkActive="bg-[#F0F4F8] text-[#0B192C] font-semibold"
-          class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md hover:bg-[#F0F4F8]/60 hover:text-[#0B192C] transition-colors"
+          routerLinkActive="bg-[#152B44] text-white font-medium border-l-2 border-sky-400"
+          class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md hover:bg-[#112238] hover:text-white transition-colors"
         >
           <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -122,18 +122,18 @@ import { NotificationService } from '../../../core/services/notification.service
       </nav>
 
       <!-- Minimal Bottom Footer -->
-      <div class="p-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+      <div class="p-3 border-t border-[#1E3756] flex items-center justify-between text-[11px] text-slate-400">
         <div class="flex items-center gap-2">
-          <div class="w-5 h-5 rounded-full bg-[#F0F4F8] text-[#0B192C] flex items-center justify-center text-[9px] font-semibold">
+          <div class="w-5 h-5 rounded-full bg-[#152B44] text-slate-200 border border-[#1E3756] flex items-center justify-center text-[9px] font-semibold">
             SM
           </div>
-          <span class="text-[#0B192C] font-medium truncate max-w-[100px]">S. Morales</span>
+          <span class="text-slate-200 font-medium truncate max-w-[100px]">S. Morales</span>
         </div>
         <button 
           type="button" 
           (click)="resetDemoData()" 
           title="Restablecer datos demo"
-          class="text-slate-400 hover:text-[#0B192C] p-1 rounded transition-colors"
+          class="text-slate-400 hover:text-white p-1 rounded transition-colors"
         >
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />

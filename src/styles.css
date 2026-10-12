@@ -2,37 +2,39 @@
 
 @layer base {
   :root {
-    --aura-navy: #0B192C;
-    --aura-navy-hover: #142842;
-    --aura-navy-active: #081220;
-    --aura-navy-light: #F0F4F8;
-    --aura-bg: #FAFBFD;
+    --aura-bg: #0B192C;
+    --aura-surface: #112238;
+    --aura-surface-elevated: #152B44;
+    --aura-border: #1E3756;
+    --aura-border-subtle: #172D48;
+    --aura-text: #FFFFFF;
+    --aura-muted: #94A3B8;
   }
 
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: #FAFBFD;
-    color: #0B192C;
+    background-color: #0B192C;
+    color: #F8FAFC;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Custom subtle scrollbar */
+/* Custom subtle dark scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #0B192C;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #1E3756;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0B192C;
+  background: #2E517C;
 }

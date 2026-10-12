@@ -9,7 +9,7 @@ import { RequestStatus } from '../../../core/models/request.model';
   imports: [CommonModule],
   template: `
     <span 
-      class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-normal tracking-normal transition-colors"
+      class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium tracking-normal border transition-colors"
       [ngClass]="classes"
     >
       <span class="w-1.5 h-1.5 rounded-full" [ngClass]="dotClasses"></span>
@@ -34,7 +34,7 @@ export class BadgeComponent {
       case 'high': return 'Alta';
       case 'urgent': return 'Urgente';
 
-      case 'pending_approval': return 'Pendiente';
+      case 'pending_approval': return 'Por aprobar';
       case 'approved': return 'Aprobada';
       case 'rejected': return 'Rechazada';
       case 'changes_requested': return 'Observada';
@@ -47,22 +47,22 @@ export class BadgeComponent {
     switch (this.value) {
       case 'completed':
       case 'approved':
-        return 'text-emerald-700 bg-emerald-50/80';
+        return 'text-emerald-300 bg-emerald-950/50 border-emerald-800/60';
       case 'in_progress':
-        return 'text-sky-700 bg-sky-50/80';
+        return 'text-sky-300 bg-sky-950/50 border-sky-800/60';
       case 'in_review':
       case 'pending_approval':
       case 'medium':
-        return 'text-amber-700 bg-amber-50/80';
+        return 'text-amber-300 bg-amber-950/50 border-amber-800/60';
       case 'urgent':
       case 'blocked':
       case 'rejected':
-        return 'text-rose-700 bg-rose-50/80';
+        return 'text-rose-300 bg-rose-950/50 border-rose-800/60';
       case 'high':
       case 'changes_requested':
-        return 'text-amber-800 bg-amber-50/80';
+        return 'text-amber-400 bg-amber-950/40 border-amber-700/60';
       default:
-        return 'text-slate-600 bg-slate-100';
+        return 'text-slate-300 bg-slate-800/60 border-slate-700/60';
     }
   }
 
@@ -70,20 +70,20 @@ export class BadgeComponent {
     switch (this.value) {
       case 'completed':
       case 'approved':
-        return 'bg-emerald-500';
+        return 'bg-emerald-400';
       case 'in_progress':
-        return 'bg-sky-500';
+        return 'bg-sky-400';
       case 'in_review':
       case 'pending_approval':
       case 'medium':
-        return 'bg-amber-500';
+        return 'bg-amber-400';
       case 'urgent':
       case 'blocked':
       case 'rejected':
-        return 'bg-rose-500';
+        return 'bg-rose-400';
       case 'high':
       case 'changes_requested':
-        return 'bg-amber-600';
+        return 'bg-amber-500';
       default:
         return 'bg-slate-400';
     }

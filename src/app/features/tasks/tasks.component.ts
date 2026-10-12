@@ -11,10 +11,10 @@ import { Task, TaskStatus } from '../../core/models/task.model';
   imports: [CommonModule, FormsModule],
   template: `
     <div class="space-y-4 max-w-5xl">
-      <!-- Minimalist Header & Filters -->
+      <!-- Minimalist Header & Filters in Aura Navy -->
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1">
         <div>
-          <h2 class="text-base font-semibold text-[#0B192C] tracking-tight">Tareas</h2>
+          <h2 class="text-base font-semibold text-white tracking-tight">Tareas</h2>
           <p class="text-xs text-slate-400">Listado general de operaciones y asignaciones.</p>
         </div>
 
@@ -22,7 +22,7 @@ import { Task, TaskStatus } from '../../core/models/task.model';
           <!-- Quick Filter Status -->
           <select 
             [(ngModel)]="filterStatus" 
-            class="text-xs px-2.5 py-1.5 rounded border border-slate-200 bg-white text-slate-700 focus:outline-none focus:border-[#0B192C]"
+            class="text-xs px-2.5 py-1.5 rounded border border-[#1E3756] bg-[#112238] text-slate-200 focus:outline-none focus:border-sky-400"
           >
             <option value="all">Todos los estados</option>
             <option value="pending">Pendiente</option>
@@ -37,24 +37,24 @@ import { Task, TaskStatus } from '../../core/models/task.model';
             type="text" 
             [(ngModel)]="searchQuery" 
             placeholder="Buscar..."
-            class="text-xs px-2.5 py-1.5 rounded border border-slate-200 focus:outline-none focus:border-[#0B192C] w-36 sm:w-48"
+            class="text-xs px-2.5 py-1.5 rounded border border-[#1E3756] bg-[#112238] text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 w-36 sm:w-48"
           />
 
           <button 
             type="button"
             (click)="onNewTask.emit()"
-            class="text-xs px-3 py-1.5 bg-[#0B192C] hover:bg-[#142842] text-white rounded shadow-2xs transition-colors"
+            class="text-xs px-3 py-1.5 bg-white text-[#0B192C] font-semibold hover:bg-slate-100 rounded shadow-xs transition-colors"
           >
             + Nueva
           </button>
         </div>
       </div>
 
-      <!-- Clean Minimal Table -->
-      <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden shadow-2xs">
+      <!-- Clean Minimal Table in Aura Navy -->
+      <div class="bg-[#112238] rounded-lg border border-[#1E3756] overflow-hidden">
         <table class="w-full text-left text-xs border-collapse">
           <thead>
-            <tr class="border-b border-slate-100 text-slate-400 font-medium text-[11px]">
+            <tr class="border-b border-[#1E3756] text-slate-400 font-medium text-[11px]">
               <th class="py-2.5 px-4 font-normal">Código</th>
               <th class="py-2.5 px-4 font-normal">Título</th>
               <th class="py-2.5 px-4 font-normal">Responsable</th>
@@ -63,22 +63,22 @@ import { Task, TaskStatus } from '../../core/models/task.model';
               <th class="py-2.5 px-4 font-normal text-right">Acción</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-slate-100">
+          <tbody class="divide-y divide-[#1E3756]/60">
             @for (task of filteredTasks; track task.id) {
-              <tr class="hover:bg-[#F0F4F8]/40 transition-colors">
-                <td class="py-3 px-4 font-mono text-[11px] text-slate-400">{{ task.code }}</td>
+              <tr class="hover:bg-[#152B44]/80 transition-colors">
+                <td class="py-3 px-4 font-mono text-[11px] text-sky-400">{{ task.code }}</td>
                 <td class="py-3 px-4">
-                  <div class="font-medium text-[#0B192C]">{{ task.title }}</div>
+                  <div class="font-medium text-white">{{ task.title }}</div>
                   @if (task.description) {
                     <div class="text-[11px] text-slate-400 truncate max-w-md mt-0.5">{{ task.description }}</div>
                   }
                 </td>
-                <td class="py-3 px-4 text-slate-600 whitespace-nowrap">{{ task.assignee?.name || '—' }}</td>
+                <td class="py-3 px-4 text-slate-300 whitespace-nowrap">{{ task.assignee?.name || '—' }}</td>
                 <td class="py-3 px-4 whitespace-nowrap">
                   <select 
                     [ngModel]="task.status" 
                     (ngModelChange)="onStatusChange(task.id, $event)"
-                    class="text-[11px] py-0.5 px-1.5 rounded border border-slate-200 bg-white text-slate-700 focus:outline-none focus:border-[#0B192C]"
+                    class="text-[11px] py-0.5 px-1.5 rounded border border-[#1E3756] bg-[#0B192C] text-slate-200 focus:outline-none focus:border-sky-400"
                   >
                     <option value="pending">Pendiente</option>
                     <option value="in_progress">En curso</option>
@@ -87,14 +87,14 @@ import { Task, TaskStatus } from '../../core/models/task.model';
                     <option value="blocked">Bloqueada</option>
                   </select>
                 </td>
-                <td class="py-3 px-4 whitespace-nowrap text-[11px]" [ngClass]="isOverdue(task.dueDate, task.status) ? 'text-rose-600 font-medium' : 'text-slate-400'">
+                <td class="py-3 px-4 whitespace-nowrap text-[11px]" [ngClass]="isOverdue(task.dueDate, task.status) ? 'text-rose-400 font-medium' : 'text-slate-400'">
                   {{ task.dueDate }}
                 </td>
                 <td class="py-3 px-4 text-right whitespace-nowrap">
                   <button 
                     type="button" 
                     (click)="deleteTask(task)"
-                    class="text-slate-300 hover:text-rose-600 p-1"
+                    class="text-slate-500 hover:text-rose-400 p-1"
                     title="Eliminar"
                   >
                     &times;

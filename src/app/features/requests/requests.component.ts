@@ -13,35 +13,35 @@ import { BadgeComponent } from '../../shared/components/badge/badge.component';
       <!-- Header & Action with Aura Navy -->
       <div class="flex items-center justify-between pb-1">
         <div>
-          <h2 class="text-base font-semibold text-[#0B192C] tracking-tight">Solicitudes</h2>
+          <h2 class="text-base font-semibold text-white tracking-tight">Solicitudes</h2>
           <p class="text-xs text-slate-400">Requerimientos operativos y compras internas.</p>
         </div>
 
         <button 
           type="button"
           (click)="onNewRequest.emit()"
-          class="text-xs px-3 py-1.5 bg-[#0B192C] hover:bg-[#142842] text-white rounded shadow-2xs transition-colors"
+          class="text-xs px-3 py-1.5 bg-white text-[#0B192C] font-semibold hover:bg-slate-100 rounded shadow-xs transition-colors"
         >
           + Nueva
         </button>
       </div>
 
-      <!-- Clean List -->
-      <div class="bg-white rounded-lg border border-slate-200/80 overflow-hidden shadow-2xs divide-y divide-slate-100 text-xs">
+      <!-- Clean List in Aura Navy -->
+      <div class="bg-[#112238] rounded-lg border border-[#1E3756] overflow-hidden divide-y divide-[#1E3756]/60 text-xs">
         @for (req of opsService.enrichedRequests(); track req.id) {
-          <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#F0F4F8]/40 transition-colors">
+          <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#152B44]/80 transition-colors">
             <div class="min-w-0">
               <div class="flex items-center gap-2">
-                <span class="font-mono text-[10px] text-slate-400">{{ req.code }}</span>
-                <span class="font-medium text-[#0B192C]">{{ req.title }}</span>
+                <span class="font-mono text-[10px] text-sky-400">{{ req.code }}</span>
+                <span class="font-medium text-white">{{ req.title }}</span>
                 <app-badge [value]="req.status"></app-badge>
               </div>
-              <p class="text-[11px] text-slate-500 mt-1 line-clamp-1">{{ req.justification }}</p>
+              <p class="text-[11px] text-slate-300 mt-1 line-clamp-1">{{ req.justification }}</p>
               <div class="text-[10px] text-slate-400 mt-1 flex items-center gap-2">
                 <span>Por: {{ req.requester?.name }}</span>
                 @if (req.estimatedCost) {
                   <span>&bull;</span>
-                  <span class="font-mono font-medium text-[#0B192C]">\${{ req.estimatedCost | number }} {{ req.currency }}</span>
+                  <span class="font-mono font-medium text-sky-300">\${{ req.estimatedCost | number }} {{ req.currency }}</span>
                 }
               </div>
             </div>
