@@ -9,7 +9,7 @@ import { RequestStatus } from '../../../core/models/request.model';
   imports: [CommonModule],
   template: `
     <span 
-      class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-medium tracking-tight border transition-colors"
+      class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-normal tracking-normal transition-colors"
       [ngClass]="classes"
     >
       <span class="w-1.5 h-1.5 rounded-full" [ngClass]="dotClasses"></span>
@@ -23,63 +23,46 @@ export class BadgeComponent {
 
   get label(): string {
     switch (this.value) {
-      // Task Statuses
       case 'pending': return 'Pendiente';
-      case 'in_progress': return 'En Curso';
-      case 'in_review': return 'En Revisión';
+      case 'in_progress': return 'En curso';
+      case 'in_review': return 'Revisión';
       case 'completed': return 'Completada';
       case 'blocked': return 'Bloqueada';
 
-      // Priorities
       case 'low': return 'Baja';
       case 'medium': return 'Media';
       case 'high': return 'Alta';
       case 'urgent': return 'Urgente';
 
-      // Request Statuses
-      case 'pending_approval': return 'Pendiente de Aprobación';
+      case 'pending_approval': return 'Pendiente';
       case 'approved': return 'Aprobada';
       case 'rejected': return 'Rechazada';
-      case 'changes_requested': return 'Requiere Cambios';
+      case 'changes_requested': return 'Observada';
 
       default: return this.value;
     }
   }
 
   get classes(): string {
-    // Subtle, sober palette (neutral borders, desaturated backgrounds)
     switch (this.value) {
-      // Completed / Approved
       case 'completed':
       case 'approved':
-        return 'bg-emerald-50 text-emerald-800 border-emerald-200/80';
-      
-      // In Progress / Active
+        return 'text-emerald-700 bg-emerald-50/80';
       case 'in_progress':
-        return 'bg-sky-50 text-sky-800 border-sky-200/80';
-
-      // In Review / Medium / Pending Approval
+        return 'text-sky-700 bg-sky-50/80';
       case 'in_review':
       case 'pending_approval':
       case 'medium':
-        return 'bg-amber-50 text-amber-800 border-amber-200/80';
-
-      // Urgent / Blocked / Rejected
+        return 'text-amber-700 bg-amber-50/80';
       case 'urgent':
       case 'blocked':
       case 'rejected':
-        return 'bg-rose-50 text-rose-800 border-rose-200/80';
-
-      // High priority / Changes Requested
+        return 'text-rose-700 bg-rose-50/80';
       case 'high':
       case 'changes_requested':
-        return 'bg-orange-50 text-orange-800 border-orange-200/80';
-
-      // Low priority / Pending
-      case 'low':
-      case 'pending':
+        return 'text-amber-800 bg-amber-50/80';
       default:
-        return 'bg-slate-100 text-slate-700 border-slate-200';
+        return 'text-slate-600 bg-slate-100';
     }
   }
 
@@ -100,7 +83,7 @@ export class BadgeComponent {
         return 'bg-rose-500';
       case 'high':
       case 'changes_requested':
-        return 'bg-orange-500';
+        return 'bg-amber-600';
       default:
         return 'bg-slate-400';
     }
