@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="100%" height="100%" fill="none">
+  <!-- AURA -->
+  <text x="35" y="240" font-family="'Space Grotesk', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="240" font-weight="900" fill="#141E30" letter-spacing="-4">AURA</text>
+  
+  <!-- FLECHA ROJA DIAGONAL HACIA ARRIBA -->
+  <g transform="translate(685, 75)">
+    <!-- Línea diagonal gruesa con puntas redondeadas -->
+    <line x1="15" y1="125" x2="115" y2="25" stroke="#DC2626" stroke-width="32" stroke-linecap="round" />
+    <!-- Cabeza de la flecha -->
+    <path d="M40 25 L115 25 L115 100" stroke="#DC2626" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+
+  <!-- LÍNEA IZQUIERDA -->
+  <line x1="45" y1="315" x2="115" y2="315" stroke="#4A6582" stroke-width="12" stroke-linecap="round" />
+
+  <!-- CORPORATIVA CON ESPACIADO ELEGANTE -->
+  <text x="145" y="327" font-family="'Space Grotesk', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="54" font-weight="700" fill="#4A6582" letter-spacing="18">CORPORATIVA</text>
+
+  <!-- LÍNEA DERECHA -->
+  <line x1="775" y1="315" x2="845" y2="315" stroke="#4A6582" stroke-width="12" stroke-linecap="round" />
+</svg>

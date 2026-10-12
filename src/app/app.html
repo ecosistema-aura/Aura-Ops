@@ -10,9 +10,9 @@
       (onNewRequest)="openNewRequestModal()"
     ></app-navbar>
 
-    <!-- Scrollable Router Body -->
-    <main class="flex-1 overflow-y-auto p-6 md:p-8 bg-[#0B192C]">
-      <div class="max-w-7xl mx-auto">
+    <!-- Scrollable Router Body with generous padding -->
+    <main class="flex-1 overflow-y-auto p-6 md:p-10 bg-[#0B192C]">
+      <div class="max-w-6xl mx-auto">
         <router-outlet 
           (activate)="onActivateChild($event)"
         ></router-outlet>

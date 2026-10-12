@@ -9,49 +9,53 @@ import { BadgeComponent } from '../../shared/components/badge/badge.component';
   standalone: true,
   imports: [CommonModule, FormsModule, BadgeComponent],
   template: `
-    <div class="space-y-4 max-w-5xl">
-      <!-- Header & Action with Aura Navy -->
+    <div class="space-y-6">
+      <!-- Header & Action with Aura Navy & Crimson -->
       <div class="flex items-center justify-between pb-1">
         <div>
-          <h2 class="text-base font-semibold text-white tracking-tight">Solicitudes</h2>
-          <p class="text-xs text-slate-400">Requerimientos operativos y compras internas.</p>
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#E11D48]"></span>
+            <h2 class="text-2xl font-bold text-white tracking-tight">Solicitudes Operativas</h2>
+          </div>
+          <p class="text-sm text-slate-400 mt-1">Requerimientos internos: compras de insumos, accesos a sistemas y presupuestos.</p>
         </div>
 
         <button 
           type="button"
           (click)="onNewRequest.emit()"
-          class="text-xs px-3 py-1.5 bg-white text-[#0B192C] font-semibold hover:bg-slate-100 rounded shadow-xs transition-colors"
+          class="text-sm px-4 py-2 bg-white text-[#0B192C] font-semibold hover:bg-slate-100 rounded-lg shadow-xs transition-colors flex items-center gap-1.5"
         >
-          + Nueva
+          <span class="text-[#E11D48] font-bold">+</span>
+          <span>Nueva Solicitud</span>
         </button>
       </div>
 
       <!-- Clean List in Aura Navy -->
-      <div class="bg-[#112238] rounded-lg border border-[#1E3756] overflow-hidden divide-y divide-[#1E3756]/60 text-xs">
+      <div class="bg-[#112238] rounded-xl border border-[#1E3756] overflow-hidden divide-y divide-[#1E3756]/60 text-sm shadow-xs">
         @for (req of opsService.enrichedRequests(); track req.id) {
-          <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#152B44]/80 transition-colors">
+          <div class="p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#152B44]/80 transition-colors">
             <div class="min-w-0">
-              <div class="flex items-center gap-2">
-                <span class="font-mono text-[10px] text-sky-400">{{ req.code }}</span>
-                <span class="font-medium text-white">{{ req.title }}</span>
+              <div class="flex items-center gap-2.5">
+                <span class="font-mono text-xs font-bold text-sky-400">{{ req.code }}</span>
+                <span class="font-semibold text-white text-base">{{ req.title }}</span>
                 <app-badge [value]="req.status"></app-badge>
               </div>
-              <p class="text-[11px] text-slate-300 mt-1 line-clamp-1">{{ req.justification }}</p>
-              <div class="text-[10px] text-slate-400 mt-1 flex items-center gap-2">
-                <span>Por: {{ req.requester?.name }}</span>
+              <p class="text-sm text-slate-300 mt-1.5 leading-relaxed">{{ req.justification }}</p>
+              <div class="text-xs text-slate-400 mt-2 flex items-center gap-2.5 font-medium">
+                <span>Solicitado por: <strong class="text-slate-200">{{ req.requester?.name }}</strong> ({{ req.requester?.department }})</span>
                 @if (req.estimatedCost) {
                   <span>&bull;</span>
-                  <span class="font-mono font-medium text-sky-300">\${{ req.estimatedCost | number }} {{ req.currency }}</span>
+                  <span class="font-mono font-bold text-emerald-400 text-xs">\${{ req.estimatedCost | number }} {{ req.currency }}</span>
                 }
               </div>
             </div>
 
-            <div class="text-right text-[11px] text-slate-400 shrink-0">
+            <div class="text-right text-xs text-slate-400 shrink-0 font-mono">
               {{ req.submittedAt | date:'shortDate' }}
             </div>
           </div>
         } @empty {
-          <div class="py-8 text-center text-xs text-slate-400">No hay solicitudes registradas</div>
+          <div class="py-12 text-center text-sm text-slate-400">No hay solicitudes registradas</div>
         }
       </div>
     </div>

@@ -9,7 +9,7 @@ import { RequestStatus } from '../../../core/models/request.model';
   imports: [CommonModule],
   template: `
     <span 
-      class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-medium tracking-normal border transition-colors"
+      class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold tracking-normal border transition-colors"
       [ngClass]="classes"
     >
       <span class="w-1.5 h-1.5 rounded-full" [ngClass]="dotClasses"></span>

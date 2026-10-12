@@ -11,20 +11,24 @@ import { OperationRequest, RequestStatus } from '../../core/models/request.model
   standalone: true,
   imports: [CommonModule, FormsModule, BadgeComponent],
   template: `
-    <div class="space-y-4 max-w-5xl">
+    <div class="space-y-6">
       <!-- Header & Tab with Aura Navy -->
-      <div class="flex items-center justify-between pb-1">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2">
         <div>
-          <h2 class="text-base font-semibold text-white tracking-tight">Aprobaciones</h2>
-          <p class="text-xs text-slate-400">Autorización de presupuestos, compras y cambios operativos.</p>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-[#E11D48]"></span>
+            <span class="text-xs font-semibold tracking-wider uppercase text-slate-400">Control de Autorizaciones</span>
+          </div>
+          <h2 class="text-2xl font-bold text-white tracking-tight">Aprobaciones</h2>
+          <p class="text-sm text-slate-400 mt-1">Autorización de presupuestos, compras y cambios operativos clave.</p>
         </div>
 
-        <div class="flex gap-2 text-xs">
+        <div class="flex gap-2">
           <button 
             type="button" 
             (click)="tab = 'pending'"
             [ngClass]="tab === 'pending' ? 'bg-white text-[#0B192C] font-semibold shadow-xs' : 'text-slate-300 hover:bg-[#152B44] border border-[#1E3756]'"
-            class="px-2.5 py-1 rounded transition-colors"
+            class="px-4 py-2 text-sm rounded-lg transition-colors cursor-pointer"
           >
             Pendientes ({{ pendingCount }})
           </button>
@@ -32,7 +36,7 @@ import { OperationRequest, RequestStatus } from '../../core/models/request.model
             type="button" 
             (click)="tab = 'resolved'"
             [ngClass]="tab === 'resolved' ? 'bg-white text-[#0B192C] font-semibold shadow-xs' : 'text-slate-300 hover:bg-[#152B44] border border-[#1E3756]'"
-            class="px-2.5 py-1 rounded transition-colors"
+            class="px-4 py-2 text-sm rounded-lg transition-colors cursor-pointer"
           >
             Historial
           </button>
@@ -40,38 +44,39 @@ import { OperationRequest, RequestStatus } from '../../core/models/request.model
       </div>
 
       <!-- Clean List in Aura Navy -->
-      <div class="bg-[#112238] rounded-lg border border-[#1E3756] overflow-hidden divide-y divide-[#1E3756]/60 text-xs">
+      <div class="bg-[#112238] rounded-xl border border-[#1E3756] overflow-hidden divide-y divide-[#1E3756]/60 shadow-md">
         @for (req of currentTabRequests; track req.id) {
-          <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-[#152B44]/80 transition-colors">
+          <div class="p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-5 hover:bg-[#152B44]/60 transition-colors">
             <div class="min-w-0">
-              <div class="flex items-center gap-2">
-                <span class="font-mono text-[10px] text-sky-400">{{ req.code }}</span>
-                <span class="font-medium text-white">{{ req.title }}</span>
+              <div class="flex flex-wrap items-center gap-2.5">
+                <span class="font-mono text-xs font-semibold text-sky-400 bg-sky-950/60 border border-sky-800/50 px-2 py-0.5 rounded">{{ req.code }}</span>
+                <span class="text-base font-semibold text-white">{{ req.title }}</span>
                 <app-badge [value]="req.status"></app-badge>
               </div>
-              <p class="text-[11px] text-slate-300 mt-1">{{ req.justification }}</p>
-              <div class="text-[10px] text-slate-400 mt-1 flex items-center gap-2">
-                <span>Por: {{ req.requester?.name }} ({{ req.requester?.department }})</span>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">{{ req.justification }}</p>
+              <div class="text-xs text-slate-400 mt-2 flex flex-wrap items-center gap-3">
+                <span>Por: <strong class="text-slate-200">{{ req.requester?.name }}</strong> ({{ req.requester?.department }})</span>
                 @if (req.estimatedCost) {
                   <span>&bull;</span>
-                  <span class="font-mono font-medium text-sky-300">\${{ req.estimatedCost | number }} {{ req.currency }}</span>
+                  <span class="font-mono font-medium text-emerald-400 text-sm">\${{ req.estimatedCost | number }} {{ req.currency }}</span>
                 }
               </div>
             </div>
 
             @if (req.status === 'pending_approval') {
-              <div class="flex items-center gap-2 shrink-0">
+              <div class="flex items-center gap-3 shrink-0">
                 <button 
                   type="button" 
                   (click)="resolve(req.id, 'approved')"
-                  class="px-3 py-1.5 bg-white text-[#0B192C] font-semibold rounded shadow-xs hover:bg-slate-100 transition-colors"
+                  class="px-4 py-2.5 text-sm bg-white text-[#0B192C] font-bold rounded-lg shadow-sm hover:bg-slate-100 transition-colors cursor-pointer flex items-center gap-1.5"
                 >
+                  <svg class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
                   Aprobar
                 </button>
                 <button 
                   type="button" 
                   (click)="resolve(req.id, 'rejected')"
-                  class="px-3 py-1.5 text-slate-400 hover:text-rose-400 hover:bg-[#152B44] rounded transition-colors"
+                  class="px-4 py-2.5 text-sm text-rose-300 hover:text-white hover:bg-rose-950/50 border border-rose-900/50 rounded-lg transition-colors cursor-pointer"
                 >
                   Rechazar
                 </button>
@@ -79,8 +84,8 @@ import { OperationRequest, RequestStatus } from '../../core/models/request.model
             }
           </div>
         } @empty {
-          <div class="py-8 text-center text-xs text-slate-400">
-            {{ tab === 'pending' ? 'No hay solicitudes pendientes de aprobación' : 'No hay historial' }}
+          <div class="py-12 text-center text-sm text-slate-400">
+            {{ tab === 'pending' ? 'No hay solicitudes pendientes de aprobación' : 'No hay historial disponible' }}
           </div>
         }
       </div>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <rect width="120" height="120" rx="24" fill="#0A1128"/>
+  <path d="M35 85L60 35L85 85H68L60 67L52 85H35Z" fill="#F8FAFC"/>
+  <!-- Red dynamic arrow mark -->
+  <path d="M72 32L95 32L95 55L86 46L76 56L68 48L78 38L72 32Z" fill="#E11D48"/>
+</svg>

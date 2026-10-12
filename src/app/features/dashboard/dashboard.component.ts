@@ -11,29 +11,42 @@ import { Task } from '../../core/models/task.model';
   standalone: true,
   imports: [CommonModule, RouterLink, BadgeComponent],
   template: `
-    <div class="space-y-8 max-w-5xl">
+    <div class="space-y-8">
       <!-- Minimalist Header & KPI Row in Aura Navy -->
       <div>
-        <h2 class="text-base font-semibold text-white tracking-tight">Resumen Operativo</h2>
-        <p class="text-xs text-slate-400 mt-0.5">Estado general de tareas, aprobaciones y plazos del equipo.</p>
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#E11D48]"></span>
+          <h2 class="text-2xl font-bold text-white tracking-tight">Centro de Operaciones</h2>
+        </div>
+        <p class="text-sm text-slate-400 mt-1">Supervisión ejecutiva de tareas activas, autorizaciones y cumplimiento de plazos.</p>
         
-        <!-- Clean, calm 4-metric strip -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4 pt-4 border-t border-[#1E3756]">
-          <div class="bg-[#112238] p-3.5 rounded-lg border border-[#1E3756]">
-            <div class="text-[11px] text-slate-400 font-medium">Cumplimiento</div>
-            <div class="text-xl font-bold text-white mt-1">{{ opsService.metrics().onTimeDeliveryRate }}%</div>
+        <!-- Clean, prominent 4-metric strip -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+          <div class="bg-[#112238] p-5 rounded-xl border border-[#1E3756] shadow-xs">
+            <div class="text-xs uppercase tracking-wider font-semibold text-slate-400">Cumplimiento SLA</div>
+            <div class="text-3xl font-extrabold text-white mt-1.5 flex items-baseline gap-2">
+              {{ opsService.metrics().onTimeDeliveryRate }}%
+              <span class="text-xs font-medium text-emerald-400 font-sans">A tiempo</span>
+            </div>
           </div>
-          <div class="bg-[#112238] p-3.5 rounded-lg border border-[#1E3756]">
-            <div class="text-[11px] text-slate-400 font-medium">Tareas Activas</div>
-            <div class="text-xl font-bold text-white mt-1">{{ opsService.metrics().pendingTasks }}</div>
+
+          <div class="bg-[#112238] p-5 rounded-xl border border-[#1E3756] shadow-xs">
+            <div class="text-xs uppercase tracking-wider font-semibold text-slate-400">Tareas Activas</div>
+            <div class="text-3xl font-extrabold text-white mt-1.5">
+              {{ opsService.metrics().pendingTasks }}
+            </div>
           </div>
-          <div class="bg-[#112238] p-3.5 rounded-lg border border-[#1E3756]">
-            <div class="text-[11px] text-slate-400 font-medium">Por Aprobar</div>
-            <div class="text-xl font-bold text-amber-300 mt-1">{{ opsService.metrics().pendingApprovals }}</div>
+
+          <div class="bg-[#112238] p-5 rounded-xl border border-[#1E3756] shadow-xs">
+            <div class="text-xs uppercase tracking-wider font-semibold text-slate-400">Por Autorizar</div>
+            <div class="text-3xl font-extrabold text-amber-300 mt-1.5">
+              {{ opsService.metrics().pendingApprovals }}
+            </div>
           </div>
-          <div class="bg-[#112238] p-3.5 rounded-lg border border-[#1E3756]">
-            <div class="text-[11px] text-slate-400 font-medium">Fuera de Plazo</div>
-            <div class="text-xl font-bold mt-1" [ngClass]="opsService.metrics().overdueTasksCount > 0 ? 'text-rose-400' : 'text-white'">
+
+          <div class="bg-[#112238] p-5 rounded-xl border border-[#1E3756] shadow-xs">
+            <div class="text-xs uppercase tracking-wider font-semibold text-slate-400">Fuera de Plazo</div>
+            <div class="text-3xl font-extrabold mt-1.5" [ngClass]="opsService.metrics().overdueTasksCount > 0 ? 'text-[#FB7185]' : 'text-white'">
               {{ opsService.metrics().overdueTasksCount }}
             </div>
           </div>
@@ -41,23 +54,23 @@ import { Task } from '../../core/models/task.model';
       </div>
 
       <!-- Clean Section: Prioridades del Turno -->
-      <div class="bg-[#112238] rounded-lg border border-[#1E3756] overflow-hidden">
-        <div class="px-4 py-3 border-b border-[#1E3756] flex items-center justify-between">
-          <div class="text-xs font-semibold text-white">Tareas en curso</div>
-          <a routerLink="/tasks" class="text-[11px] text-slate-400 hover:text-white transition-colors">Ver todas &rarr;</a>
+      <div class="bg-[#112238] rounded-xl border border-[#1E3756] overflow-hidden shadow-xs">
+        <div class="px-5 py-4 border-b border-[#1E3756] flex items-center justify-between">
+          <div class="text-sm font-semibold text-white tracking-wide">Tareas prioritarias en curso</div>
+          <a routerLink="/tasks" class="text-xs text-sky-400 hover:text-white font-medium transition-colors">Ver todas &rarr;</a>
         </div>
 
-        <div class="divide-y divide-[#1E3756]/60 text-xs">
+        <div class="divide-y divide-[#1E3756]/60 text-sm">
           @for (task of priorityTasks; track task.id) {
-            <div class="px-4 py-3 flex items-center justify-between gap-4 hover:bg-[#152B44]/80 transition-colors">
-              <div class="flex items-center gap-3 min-w-0">
-                <span class="text-[10px] font-mono text-sky-400 w-16">{{ task.code }}</span>
-                <span class="font-medium text-white truncate">{{ task.title }}</span>
+            <div class="px-5 py-4 flex items-center justify-between gap-4 hover:bg-[#152B44]/80 transition-colors">
+              <div class="flex items-center gap-3.5 min-w-0">
+                <span class="text-xs font-mono font-bold text-sky-400 w-20 shrink-0">{{ task.code }}</span>
+                <span class="font-medium text-white truncate text-sm">{{ task.title }}</span>
               </div>
 
-              <div class="flex items-center gap-4 shrink-0 text-slate-400">
-                <span class="text-[11px] text-slate-300 hidden sm:inline">{{ task.assignee?.name }}</span>
-                <span class="text-[11px]" [ngClass]="isOverdue(task.dueDate) ? 'text-rose-400 font-medium' : 'text-slate-400'">
+              <div class="flex items-center gap-4 shrink-0 text-slate-400 text-xs">
+                <span class="text-slate-300 hidden sm:inline">{{ task.assignee?.name }}</span>
+                <span [ngClass]="isOverdue(task.dueDate) ? 'text-[#FB7185] font-semibold' : 'text-slate-400'">
                   {{ task.dueDate }}
                 </span>
                 <app-badge [value]="task.status"></app-badge>
@@ -65,7 +78,7 @@ import { Task } from '../../core/models/task.model';
                   <button 
                     type="button" 
                     (click)="completeTask(task)"
-                    class="text-[11px] text-slate-300 hover:text-white font-medium transition-colors"
+                    class="text-xs px-2.5 py-1 text-slate-300 hover:text-white hover:bg-[#1C3656] border border-transparent hover:border-[#1E3756] rounded font-medium transition-colors"
                   >
                     Listo
                   </button>
@@ -73,42 +86,42 @@ import { Task } from '../../core/models/task.model';
               </div>
             </div>
           } @empty {
-            <div class="py-8 text-center text-xs text-slate-400">Sin tareas pendientes</div>
+            <div class="py-10 text-center text-sm text-slate-400">Sin tareas pendientes</div>
           }
         </div>
       </div>
 
       <!-- Clean Section: Aprobaciones Pendientes -->
       @if (pendingRequests.length > 0) {
-        <div class="bg-[#112238] rounded-lg border border-[#1E3756] overflow-hidden">
-          <div class="px-4 py-3 border-b border-[#1E3756] flex items-center justify-between">
-            <div class="text-xs font-semibold text-white">Solicitudes por autorizar</div>
-            <a routerLink="/approvals" class="text-[11px] text-slate-400 hover:text-white transition-colors">Ir a aprobaciones &rarr;</a>
+        <div class="bg-[#112238] rounded-xl border border-[#1E3756] overflow-hidden shadow-xs">
+          <div class="px-5 py-4 border-b border-[#1E3756] flex items-center justify-between">
+            <div class="text-sm font-semibold text-white tracking-wide">Solicitudes por autorizar</div>
+            <a routerLink="/approvals" class="text-xs text-sky-400 hover:text-white font-medium transition-colors">Ir a aprobaciones &rarr;</a>
           </div>
 
-          <div class="divide-y divide-[#1E3756]/60 text-xs">
+          <div class="divide-y divide-[#1E3756]/60 text-sm">
             @for (req of pendingRequests; track req.id) {
-              <div class="px-4 py-3 flex items-center justify-between gap-4 hover:bg-[#152B44]/80 transition-colors">
+              <div class="px-5 py-4 flex items-center justify-between gap-4 hover:bg-[#152B44]/80 transition-colors">
                 <div class="min-w-0">
-                  <div class="flex items-center gap-2">
-                    <span class="font-mono text-[10px] text-sky-400">{{ req.code }}</span>
-                    <span class="font-medium text-white">{{ req.title }}</span>
+                  <div class="flex items-center gap-2.5">
+                    <span class="font-mono text-xs font-bold text-sky-400">{{ req.code }}</span>
+                    <span class="font-medium text-white text-sm">{{ req.title }}</span>
                   </div>
-                  <div class="text-[11px] text-slate-400 mt-0.5 truncate max-w-lg">{{ req.justification }}</div>
+                  <div class="text-xs text-slate-400 mt-1 truncate max-w-xl">{{ req.justification }}</div>
                 </div>
 
-                <div class="flex items-center gap-2 shrink-0">
+                <div class="flex items-center gap-2.5 shrink-0">
                   <button 
                     type="button" 
                     (click)="quickApprove(req.id)"
-                    class="px-2.5 py-1 text-[11px] font-semibold text-[#0B192C] bg-white hover:bg-slate-100 rounded shadow-xs transition-colors"
+                    class="px-3 py-1.5 text-xs font-semibold text-[#0B192C] bg-white hover:bg-slate-100 rounded-md shadow-xs transition-colors"
                   >
                     Aprobar
                   </button>
                   <button 
                     type="button" 
                     (click)="quickReject(req.id)"
-                    class="px-2 py-1 text-[11px] text-slate-400 hover:text-rose-400 rounded transition-colors"
+                    class="px-3 py-1.5 text-xs text-slate-400 hover:text-[#FB7185] rounded-md transition-colors"
                   >
                     Rechazar
                   </button>
